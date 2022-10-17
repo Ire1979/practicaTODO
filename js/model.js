@@ -1,28 +1,28 @@
 let listaTareas = new Array(
     {
         idTarea: 0,
-        titulo: 'Practica Javascript',
+        titulo: 'Práctica Javascript',
         prioridad: 'urgente'
     },
     {
         idTarea: 1,
-        titulo: 'Dormir',
-        prioridad: 'urgente'
-    },
-    {
-        idTarea: 2,
-        titulo: 'Sacar al perro',
-        prioridad: 'diaria'
-    },
-    {
-        idTarea: 3,
         titulo: 'Cocinar',
         prioridad: 'diaria'
     },
     {
-        idTarea: 4,
+        idTarea: 2,
         titulo: 'Ir al cine',
         prioridad: 'mensual'
+    },
+    {
+        idTarea: 3,
+        titulo: 'Dormir',
+        prioridad: 'urgente'
+    },
+    {
+        idTarea: 4,
+        titulo: 'Sacar al perro',
+        prioridad: 'diaria'
     },
     {
         idTarea: 5,
