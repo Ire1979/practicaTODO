@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 600px;
+    margin: 20px auto;
+}
+
+form {
+    margin: 20px 0px;
+}
+
+form h3 {
+    margin: 10px 0px 20px;
+}
+
+article {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.urgente {
+    background-color: lightcoral;
+}
+
+.diaria {
+    background-color: lightgreen;
+}
+
+.mensual {
+    background-color: lightblue;
+}
+
+#btnEliminar {
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border: none;
+}
