@@ -17,10 +17,15 @@ form h3 {
     margin: 10px 0px 20px;
 }
 
+section {
+    border: 1px solid black;
+}
+
 article {
     display: flex;
     justify-content: space-between;
     padding: 10px;
+
 }
 
 .urgente {
