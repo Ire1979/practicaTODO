@@ -19,11 +19,9 @@ form.addEventListener('submit', (event) => {
     }
 
     listaTareas.push(nuevaTarea);
-    console.log(listaTareas);
+    //console.log(listaTareas);
     pintarTareas();
 });
-
-
 
 function pintarTareas() {
     sectionTareas.innerHTML = '';
@@ -35,15 +33,16 @@ function pintarTareas() {
 
         const btnEliminar = document.createElement('button');
         btnEliminar.innerText = 'Eliminar';
-        /* btnEliminar.addEventListener('click', (event) => {
+        btnEliminar.addEventListener('click', (event) => {
             event.target.parentNode.remove();
-            listaTareas = listaTareas.filter((cli) => {
-                return cli.email !== cliente.email; */
+            listaTareas = listaTareas.filter((task) => {
+                return task.idTarea !== task.idTarea;
+            });
+        });
 
         article.append(h2Titulo, btnEliminar);
 
         sectionTareas.append(article);
     }
 }
-
 
