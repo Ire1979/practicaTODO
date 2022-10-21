@@ -25,8 +25,10 @@ form.addEventListener('submit', (event) => {
 
 function pintarTareas() {
     sectionTareas.innerHTML = '';
+
     for (let tarea of listaTareas) {
         const article = document.createElement('article');
+        article.classList.add(tarea.prioridad);
 
         const h2Titulo = document.createElement('h2');
         h2Titulo.innerText = tarea.titulo;
@@ -44,5 +46,18 @@ function pintarTareas() {
 
         sectionTareas.append(article);
     }
-}
+};
+
+
+selectPrioridad.addEventListener('change', (event) => {
+    listaTareas = listaTareas.filter((task) => {
+        return task.prioridad === event.target.value;
+    })
+    pintarTareas();
+})
+
+
+
+
+
 
