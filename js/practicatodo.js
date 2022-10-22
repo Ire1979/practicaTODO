@@ -2,28 +2,17 @@ const inputTarea = document.getElementById('inputTarea');
 const selectTarea = document.getElementById('selectTarea');
 const btnGuardar = document.getElementById('btnGuardar');
 const selectPrioridad = document.getElementById('selectPrioridad');
-const inputBuscar = document.getElementById('btnBuscar');
+const inputBuscar = document.getElementById('inputBuscar');
 
 const form = document.querySelector('form');
 const sectionTareas = document.getElementById('sectionTareas');
 
+let idNuevaTarea = listaTareas.length;
 
-pintarTareas(listaTareas);
-
-form.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    const nuevaTarea = {
-        idTarea: listaTareas.length,
-        titulo: inputTarea.value,
-        prioridad: selectTarea.value
-    }
-
-    listaTareas.push(nuevaTarea);
-
-    pintarTareas(listaTareas);
-    selectPrioridad.value = '';
-});
+let tareas = new Array();
+if (localStorage.getItem('arrTareas')) {
+    tareas = JSON.parse(localStorage.getItem('arrTareas'));
+}
 
 function pintarTareas(pLista) {
     sectionTareas.innerHTML = '';
@@ -39,29 +28,67 @@ function pintarTareas(pLista) {
         btnEliminar.innerText = 'Eliminar';
         btnEliminar.addEventListener('click', (event) => {
             event.target.parentNode.remove();
-            pLista = pLista.filter((task) => {
-                return task.idTarea !== task.idTarea;
-            });
+            pLista = pLista.filter(task => task.idTarea !== task.idTarea);
+
+            borrarPosicion = listaTareas.findIndex(task => tarea.idTarea === task.idTarea);
+
+            listaTareas.splice(borrarPosicion, 1);
+
+            const strTareas = JSON.stringify(listaTareas);
+            localStorage.setItem('arrTareas', strTareas);
         });
 
         article.append(h2Titulo, btnEliminar);
-
         sectionTareas.append(article);
     }
 };
 
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const nuevaTarea = {
+        idTarea: idNuevaTarea,
+        titulo: inputTarea.value,
+        prioridad: selectTarea.value
+    }
+
+    listaTareas.push(nuevaTarea);
+
+    const strTareas = JSON.stringify(listaTareas);
+    localStorage.setItem('arrTareas', strTareas);
+
+    pintarTareas(listaTareas);
+    selectPrioridad.value = '';
+    inputBuscar.value = '';
+    idNuevaTarea++;
+});
 
 selectPrioridad.addEventListener('change', (event) => {
-    let copiaListaTareas = [...listaTareas];
+    let listaFiltrada = [...listaTareas];
 
-    copiaListaTareas = copiaListaTareas.filter((task) => {
-        return task.prioridad === event.target.value;
-    })
+    listaFiltrada = listaFiltrada.filter(task => task.prioridad === event.target.value);
     if (event.target.value === '') {
-        copiaListaTareas = listaTareas;
+        listaFiltrada = listaTareas;
     }
-    pintarTareas(copiaListaTareas);
-})
+    pintarTareas(listaFiltrada);
+    inputBuscar.value = '';
+});
+
+inputBuscar.addEventListener('input', (event) => {
+    let listaFiltrada = [...listaTareas];
+    listaFiltrada = listaFiltrada.filter(task => task.titulo.toLowerCase().includes(event.target.value.toLowerCase()));
+    pintarTareas(listaFiltrada);
+    selectPrioridad.value = '';
+});
+
+pintarTareas(listaTareas);
+
+
+
+
+
+
+
 
 
 
