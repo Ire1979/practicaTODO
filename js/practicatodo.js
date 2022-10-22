@@ -42,10 +42,7 @@ function pintarTareas(pLista) {
         sectionTareas.append(article);
     }
 };
-
-form.addEventListener('submit', (event) => {
-    event.preventDefault();
-
+function crearTarea() {
     const nuevaTarea = {
         idTarea: idNuevaTarea,
         titulo: inputTarea.value,
@@ -61,6 +58,16 @@ form.addEventListener('submit', (event) => {
     selectPrioridad.value = '';
     inputBuscar.value = '';
     idNuevaTarea++;
+}
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (inputTarea.value === '' || selectTarea.value === '') {
+        alert('Debes completar todos los campos');
+    } else {
+        crearTarea();
+    }
+
+
 });
 
 selectPrioridad.addEventListener('change', (event) => {
