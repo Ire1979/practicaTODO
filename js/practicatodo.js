@@ -7,7 +7,8 @@ const inputBuscar = document.getElementById('btnBuscar');
 const form = document.querySelector('form');
 const sectionTareas = document.getElementById('sectionTareas');
 
-pintarTareas();
+
+pintarTareas(listaTareas);
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -19,14 +20,15 @@ form.addEventListener('submit', (event) => {
     }
 
     listaTareas.push(nuevaTarea);
-    //console.log(listaTareas);
-    pintarTareas();
+
+    pintarTareas(listaTareas);
+    selectPrioridad.value = '';
 });
 
-function pintarTareas() {
+function pintarTareas(pLista) {
     sectionTareas.innerHTML = '';
 
-    for (let tarea of listaTareas) {
+    for (let tarea of pLista) {
         const article = document.createElement('article');
         article.classList.add(tarea.prioridad);
 
@@ -37,7 +39,7 @@ function pintarTareas() {
         btnEliminar.innerText = 'Eliminar';
         btnEliminar.addEventListener('click', (event) => {
             event.target.parentNode.remove();
-            listaTareas = listaTareas.filter((task) => {
+            pLista = pLista.filter((task) => {
                 return task.idTarea !== task.idTarea;
             });
         });
@@ -50,10 +52,15 @@ function pintarTareas() {
 
 
 selectPrioridad.addEventListener('change', (event) => {
-    listaTareas = listaTareas.filter((task) => {
+    let copiaListaTareas = [...listaTareas];
+
+    copiaListaTareas = copiaListaTareas.filter((task) => {
         return task.prioridad === event.target.value;
     })
-    pintarTareas();
+    if (event.target.value === '') {
+        copiaListaTareas = listaTareas;
+    }
+    pintarTareas(copiaListaTareas);
 })
 
 
