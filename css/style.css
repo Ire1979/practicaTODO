@@ -1,48 +1,42 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.container {
-    width: 600px;
-    margin: 20px auto;
-}
-
-form {
-    margin: 20px 0px;
-}
-
-form h3 {
-    margin: 10px 0px 20px;
-}
-
-section {
-    border: 1px solid black;
-}
-
 article {
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
 
+article h3 {
+    font-size: 24px;
+    padding-left: 10px;
 }
 
 .urgente {
-    background-color: lightcoral;
+    background-color: rgb(153, 174, 198);
 }
 
 .diaria {
-    background-color: lightgreen;
+    background-color: rgb(162, 199, 232);
 }
 
 .mensual {
-    background-color: lightblue;
+    background-color: rgb(195, 220, 229);
 }
 
-#btnEliminar {
-    background-color: red;
-    color: white;
-    padding: 5px;
-    border: none;
+span {
+    font-size: 14px;
+    display: inline-block;
+    margin: 0px 5px;
+}
+
+.cl-urgente {
+    color: rgb(153, 174, 198);
+}
+
+.cl-diaria {
+    color: rgb(162, 199, 232);
+}
+
+.cl-mensual {
+    color: rgb(195, 220, 229);
 }

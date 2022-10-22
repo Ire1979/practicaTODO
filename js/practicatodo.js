@@ -21,13 +21,14 @@ function pintarTareas(pLista) {
         const article = document.createElement('article');
         article.classList.add(tarea.prioridad);
 
-        const h2Titulo = document.createElement('h2');
-        h2Titulo.innerText = tarea.titulo;
+        const h3Titulo = document.createElement('h3');
+        h3Titulo.innerText = tarea.titulo;
 
         const btnEliminar = document.createElement('button');
-        btnEliminar.innerText = 'Eliminar';
+        btnEliminar.classList.add('btn');
+        btnEliminar.innerHTML = '<i class="bi bi-trash3-fill"></i>';
         btnEliminar.addEventListener('click', (event) => {
-            event.target.parentNode.remove();
+            event.target.parentNode.parentNode.remove();
             pLista = pLista.filter(task => task.idTarea !== task.idTarea);
 
             borrarPosicion = listaTareas.findIndex(task => tarea.idTarea === task.idTarea);
@@ -38,10 +39,11 @@ function pintarTareas(pLista) {
             localStorage.setItem('arrTareas', strTareas);
         });
 
-        article.append(h2Titulo, btnEliminar);
+        article.append(h3Titulo, btnEliminar);
         sectionTareas.append(article);
     }
 };
+
 function crearTarea() {
     const nuevaTarea = {
         idTarea: idNuevaTarea,
@@ -59,15 +61,14 @@ function crearTarea() {
     inputBuscar.value = '';
     idNuevaTarea++;
 }
-form.addEventListener('submit', (event) => {
+
+btnGuardar.addEventListener('click', (event) => {
     event.preventDefault();
     if (inputTarea.value === '' || selectTarea.value === '') {
         alert('Debes completar todos los campos');
     } else {
         crearTarea();
     }
-
-
 });
 
 selectPrioridad.addEventListener('change', (event) => {

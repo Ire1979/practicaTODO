@@ -6,36 +6,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tareas TODO's</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <script src="./js/model.js"></script>
+
 </head>
 
 <body>
     <div class="container">
-        <h1>Lista de Tareas</h1>
-        <form action="">
-            <input id="inputTarea" type="text" placeholder="Introduce una tarea">
-            <select id="selectTarea">
-                <option value="">Selecciona una prioridad</option>
-                <option value="urgente">Urgente</option>
-                <option value="diaria">Diaria</option>
-                <option value="mensual">Mensual</option>
-            </select>
-            <input id="btnGuardar" type="submit" value="GUARDAR">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 class="my-4">Lista de Tareas</h1>
+                <form action="">
+                    <div class="row">
+                        <div class="col-md">
+                            <input class="form-control" id="inputTarea" type="text" placeholder="Introduce una tarea">
+                        </div>
+                        <div class="col-md">
+                            <select class="form-select" id="selectTarea">
+                                <option value="">Selecciona una prioridad</option>
+                                <option value="urgente">Urgente</option>
+                                <option value="diaria">Diaria</option>
+                                <option value="mensual">Mensual</option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <button id="btnGuardar" class="btn btn-outline-secondary" type="button">GUARDAR</button>
+                        </div>
+                    </div>
+                    <div class="alert alert-warning mt-2 mb-4 py-1 px-3" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill"></i> Debes completar todos los campos
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-md-4">
+                            <select id="selectPrioridad" class="form-select">
+                                <option value="">Selecciona una prioridad</option>
+                                <option value="urgente">Urgente</option>
+                                <option value="diaria">Diaria</option>
+                                <option value="mensual">Mensual</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="inputBuscar" class="form-control" type="text" placeholder="Tarea a buscar">
+                        </div>
+                        <div class="col-md pt-2 text-end">
+                            <span><i class="bi bi-circle-fill cl-urgente"></i> Urgente</span>
+                            <span><i class="bi bi-circle-fill cl-diaria"></i> Diaria</span>
+                            <span><i class="bi bi-circle-fill cl-mensual"></i> Mensual</span>
+                        </div>
+                    </div>
 
-            <h3>Debes completar todos los campos</h3>
 
-            <select id="selectPrioridad">
-                <option value="">Selecciona una prioridad</option>
-                <option value="urgente">Urgente</option>
-                <option value="diaria">Diaria</option>
-                <option value="mensual">Mensual</option>
-            </select>
-            <input id="inputBuscar" type="text" placeholder="Tarea a buscar">
-        </form>
+                </form>
 
-        <section id="sectionTareas"></section>
+                <section class="mt-3" id="sectionTareas"></section>
+            </div>
+
+        </div>
     </div>
+
+
+
 
     <script src="./js/practicatodo.js"></script>
 </body>
