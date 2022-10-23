@@ -1,7 +1,7 @@
 const inputTarea = document.getElementById('inputTarea');
-const selectTarea = document.getElementById('selectTarea');
-const btnGuardar = document.getElementById('btnGuardar');
 const selectPrioridad = document.getElementById('selectPrioridad');
+const btnGuardar = document.getElementById('btnGuardar');
+const filtroPrioridad = document.getElementById('filtroPrioridad');
 const inputBuscar = document.getElementById('inputBuscar');
 
 const form = document.querySelector('form');
@@ -48,7 +48,7 @@ function crearTarea() {
     const nuevaTarea = {
         idTarea: idNuevaTarea,
         titulo: inputTarea.value,
-        prioridad: selectTarea.value
+        prioridad: selectPrioridad.value
     }
 
     listaTareas.push(nuevaTarea);
@@ -57,21 +57,21 @@ function crearTarea() {
     localStorage.setItem('arrTareas', strTareas);
 
     pintarTareas(listaTareas);
-    selectPrioridad.value = '';
+    filtroPrioridad.value = '';
     inputBuscar.value = '';
     idNuevaTarea++;
 }
 
 btnGuardar.addEventListener('click', (event) => {
     event.preventDefault();
-    if (inputTarea.value === '' || selectTarea.value === '') {
+    if (inputTarea.value === '' || selectPrioridad.value === '') {
         alert('Debes completar todos los campos');
     } else {
         crearTarea();
     }
 });
 
-selectPrioridad.addEventListener('change', (event) => {
+filtroPrioridad.addEventListener('change', (event) => {
     let listaFiltrada = [...listaTareas];
 
     listaFiltrada = listaFiltrada.filter(task => task.prioridad === event.target.value);
@@ -86,7 +86,7 @@ inputBuscar.addEventListener('input', (event) => {
     let listaFiltrada = [...listaTareas];
     listaFiltrada = listaFiltrada.filter(task => task.titulo.toLowerCase().includes(event.target.value.toLowerCase()));
     pintarTareas(listaFiltrada);
-    selectPrioridad.value = '';
+    filtroPrioridad.value = '';
 });
 
 pintarTareas(listaTareas);
