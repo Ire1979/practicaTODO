@@ -56,6 +56,7 @@ function crearTarea() {
     const strTareas = JSON.stringify(listaTareas);
     localStorage.setItem('arrTareas', strTareas);
 
+
     pintarTareas(listaTareas);
     filtroPrioridad.value = '';
     inputBuscar.value = '';
@@ -90,16 +91,3 @@ inputBuscar.addEventListener('input', (event) => {
 });
 
 pintarTareas(listaTareas);
-
-
-
-
-
-
-
-
-
-
-
-
-
